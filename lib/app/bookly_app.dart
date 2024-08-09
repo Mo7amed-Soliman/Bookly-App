@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/theme/get_dark_theme.dart';
 import 'package:flutter/material.dart';
 
 class BooklyApp extends StatelessWidget {
@@ -9,7 +10,7 @@ class BooklyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bookly App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
+      theme: getDarkTheme(),
       home: const Scaffold(),
     );
   }
