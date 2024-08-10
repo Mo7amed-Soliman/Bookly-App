@@ -1,5 +1,7 @@
+import 'package:bookly_app/core/routes/routes.dart';
 import 'package:bookly_app/core/utils/app_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -9,7 +11,7 @@ class SplashViewBody extends StatefulWidget {
 }
 
 class _SplashViewBodyState extends State<SplashViewBody>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _logoScaleAnimation;
   late Animation<Offset> _textSlideAnimation;
@@ -18,6 +20,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
     _initAnimation();
+    _navigateToHome();
   }
 
   @override
@@ -69,5 +72,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
     );
 
     _animationController.forward();
+  }
+
+  void _navigateToHome() {
+    Future.delayed(const Duration(seconds: 3), () {
+      context.pushReplacement(Routes.homeView);
+    });
   }
 }
