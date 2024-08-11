@@ -14,14 +14,13 @@ abstract class AppStyles {
       ),
       textStyle14 = TextStyle(
         fontSize: 14,
-        color: Colors.white,
+        color: Colors.grey,
         fontWeight: FontWeight.normal,
       ),
       textStyle20 = TextStyle(
         fontSize: 20,
         color: Colors.white,
-        fontFamily: kGTSectraFine,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.bold,
       ),
       textStyle30 = TextStyle(
         fontSize: 30,
