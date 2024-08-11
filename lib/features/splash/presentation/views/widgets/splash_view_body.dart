@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/routes/routes.dart';
 import 'package:bookly_app/core/utils/app_assets.dart';
+import 'package:bookly_app/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -45,7 +46,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
         SlideTransition(
           position: _textSlideAnimation,
           child: const Text(
-            'Read Free Books',
+            AppStrings.readFreeBooks,
             textAlign: TextAlign.center,
           ),
         ),
@@ -75,8 +76,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void _navigateToHome() {
-    Future.delayed(const Duration(seconds: 3), () {
-      context.pushReplacement(Routes.homeView);
-    });
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        if (mounted) context.pushReplacement(Routes.homeView);
+      },
+    );
   }
 }
