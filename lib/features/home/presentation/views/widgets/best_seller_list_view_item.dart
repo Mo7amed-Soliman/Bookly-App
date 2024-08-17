@@ -22,7 +22,11 @@ class BestSellerListViewItem extends StatelessWidget {
           height: 126.0,
           child: Row(
             children: [
-              const CustomBookImage(borderRadius: 8.0),
+              const CustomBookImage(
+                borderRadius: 8.0,
+                imageUrl:
+                    'http://books.google.com/books/content?id=mIxQAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+              ),
               const SizedBox(width: defaultPadding),
               Expanded(
                 child: Column(

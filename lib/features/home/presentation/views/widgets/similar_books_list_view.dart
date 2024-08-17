@@ -17,6 +17,8 @@ class SimilarBooksListView extends StatelessWidget {
             padding: EdgeInsets.only(right: 6),
             child: CustomBookImage(
               borderRadius: 8,
+              imageUrl:
+                  'http://books.google.com/books/content?id=mIxQAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
             ),
           );
         },
