@@ -7,12 +7,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'newest_books_state.dart';
 
 class NewestBooksCubit extends Cubit<NewestBooksState> {
-  NewestBooksCubit(this.homeRepo) : super(NewestBooksInitial());
-  HomeRepoImpl homeRepo;
+  NewestBooksCubit(this._homeRepo) : super(NewestBooksInitial());
+  final HomeRepoImpl _homeRepo;
 
   Future<void> fetchNewestBooks() async {
     emit(NewestBooksLoading());
-    Either<Failure, List<BookModel>> result = await homeRepo.fetchNewestBooks();
+    Either<Failure, List<BookModel>> result =
+        await _homeRepo.fetchNewestBooks();
     result.fold(
       (failure) => emit(NewestBooksFailure(failure.errmessage)),
       (books) => emit(NewestBooksSuccess(books)),
