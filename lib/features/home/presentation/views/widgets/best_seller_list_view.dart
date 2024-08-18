@@ -1,43 +1,24 @@
 import 'package:bookly_app/core/utils/constants.dart';
-import 'package:bookly_app/features/home/presentation/view_models/newest_books_cubit/newest_books_cubit.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view_item.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view_loading_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BestSellerListView extends StatelessWidget {
-  const BestSellerListView({super.key});
+  const BestSellerListView({super.key, required this.books});
+  final List<BookModel> books;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewestBooksCubit, NewestBooksState>(
-      builder: (context, state) {
-        if (state is NewestBooksSuccess) {
-          return SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-            sliver: SliverList.builder(
-              itemCount: state.books.length,
-              itemBuilder: (context, index) {
-                return BestSellerListViewItem(
-                  bookModel: state.books[index],
-                );
-              },
-            ),
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+      sliver: SliverList.builder(
+        itemCount: books.length,
+        itemBuilder: (context, index) {
+          return BestSellerListViewItem(
+            bookModel: books[index],
           );
-        } else if (state is NewestBooksFailure) {
-          return SliverToBoxAdapter(
-            child: Center(
-                child: Text(
-              state.errMessage,
-              textAlign: TextAlign.center,
-            )),
-          );
-        } else {
-          return const SliverToBoxAdapter(
-            child: BestSellerListViewLoadingIndicator(),
-          );
-        }
-      },
+        },
+      ),
     );
   }
 }

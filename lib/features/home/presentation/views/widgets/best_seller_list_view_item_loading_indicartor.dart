@@ -13,7 +13,9 @@ class BestSellerListViewItemLoadingIndicartor extends StatelessWidget {
         height: 126.0,
         child: Row(
           children: [
-            const CustomBookImageLoadingIndicator(),
+            const CustomBookImageLoadingIndicator(
+              borderRadius: 8.0,
+            ),
             const SizedBox(width: defaultPadding),
             Expanded(
               child: Column(
@@ -27,6 +29,7 @@ class BestSellerListViewItemLoadingIndicartor extends StatelessWidget {
                   const SizedBox(height: 25.0),
                   Container(
                     height: 6.0,
+                    width: MediaQuery.of(context).size.width * 0.45,
                     color: Colors.white30,
                   ),
                   const SizedBox(height: 30.0),

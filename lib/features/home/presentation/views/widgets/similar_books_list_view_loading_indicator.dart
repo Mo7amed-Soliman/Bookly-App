@@ -15,7 +15,9 @@ class SimilarBooksListViewLoadingIndicator extends StatelessWidget {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.only(right: 6),
-            child: CustomBookImageLoadingIndicator(),
+            child: CustomBookImageLoadingIndicator(
+              borderRadius: 8.0,
+            ),
           );
         },
       ),

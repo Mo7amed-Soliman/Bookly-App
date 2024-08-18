@@ -1,9 +1,9 @@
 import 'package:bookly_app/core/utils/app_strings.dart';
 import 'package:bookly_app/core/utils/app_styles.dart';
 import 'package:bookly_app/core/utils/constants.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view_bloc_builder.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_app_bar.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/featured_books_list_view.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/featured_books_list_view_bloc_builder.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -18,7 +18,7 @@ class HomeViewBody extends StatelessWidget {
         ),
         //? featured books list view
         SliverToBoxAdapter(
-          child: FeaturedBooksListView(),
+          child: FeaturedBooksListViewBlocBuilder(),
         ),
         //? Best Seller
         SliverPadding(
@@ -35,7 +35,7 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         // ? SliverList builder
-        BestSellerListView(),
+        BestSellerListViewBlocBuilder(),
       ],
     );
   }
