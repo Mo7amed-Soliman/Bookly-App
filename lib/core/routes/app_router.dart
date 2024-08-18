@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/di/dependency_injection.dart';
 import 'package:bookly_app/core/routes/routes.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/data/repo/home_repo_impl.dart';
 import 'package:bookly_app/features/home/presentation/view_models/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/view_models/newest_books_cubit/newest_books_cubit.dart';
@@ -30,7 +31,9 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.bookDetailsView,
-      builder: (context, state) => const BookDetailsView(),
+      builder: (context, state) => BookDetailsView(
+        bookModel: state.extra as BookModel,
+      ),
     ),
   ],
 );

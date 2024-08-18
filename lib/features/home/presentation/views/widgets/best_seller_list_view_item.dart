@@ -17,7 +17,10 @@ class BestSellerListViewItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           //? go to book details navigate
-          context.push(Routes.bookDetailsView);
+          context.push(
+            Routes.bookDetailsView,
+            extra: bookModel,
+          );
         },
         child: SizedBox(
           height: 126.0,
