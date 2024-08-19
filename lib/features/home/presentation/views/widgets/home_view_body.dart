@@ -3,6 +3,7 @@ import 'package:bookly_app/core/utils/app_styles.dart';
 import 'package:bookly_app/core/utils/constants.dart';
 import 'package:bookly_app/features/home/presentation/view_models/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view_bloc_consumer.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/best_sellerl_list_view_bloc_builder_loading_indicator.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/featured_books_list_view_bloc_consumer.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class HomeViewBody extends StatefulWidget {
 class _HomeViewBodyState extends State<HomeViewBody> {
   late ScrollController _scrollController;
   bool isLoading = false;
-  int nwxtPage = 1;
+  int nextPage = 1;
   @override
   void initState() {
     super.initState();
@@ -54,6 +55,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         ),
         // ? SliverList builder
         BestSellerListViewBlocConsumer(),
+        BestSellerListViewBlocBuilderLoadingIndicator(),
       ],
     );
   }
@@ -65,7 +67,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       if (!isLoading) {
         isLoading = true;
         await BlocProvider.of<NewestBooksCubit>(context)
-            .fetchNewestBooks(pageNumber: nwxtPage++);
+            .fetchNewestBooks(pageNumber: nextPage++);
         isLoading = false;
       }
     }

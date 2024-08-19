@@ -15,7 +15,7 @@ class BestSellerListViewLoadingIndicator extends StatelessWidget {
         shrinkWrap: true,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return const BestSellerListViewItemLoadingIndicartor();
+          return const BestSellerListViewItemLoadingIndicator();
         },
       ),
     );
