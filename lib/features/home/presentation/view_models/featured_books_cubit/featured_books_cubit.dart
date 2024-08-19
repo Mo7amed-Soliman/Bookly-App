@@ -10,12 +10,22 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksStates> {
   FeaturedBooksCubit(this._homeRepo) : super(FeaturedBooksInitial());
   final HomeRepoImpl _homeRepo;
 
-  Future<void> fetchFeaturedBooks() async {
-    emit(FeaturedBooksLoading());
+  Future<void> fetchFeaturedBooks({int pageNumber = 0}) async {
+    if (pageNumber == 0) {
+      emit(FeaturedBooksLoading());
+    } else {
+      emit(FeaturedBooksPaginationLoading());
+    }
     Either<Failure, List<BookModel>> result =
-        await _homeRepo.fetchFeaturedBooks();
+        await _homeRepo.fetchFeaturedBooks(pageNumber: pageNumber);
     result.fold(
-      (failure) => emit(FeaturedBooksFailure(failure.errmessage)),
+      (failure) {
+        if (pageNumber == 0) {
+          emit(FeaturedBooksFailure(failure.errmessage));
+        } else {
+          emit(FeaturedBooksPaginationFailure(failure.errmessage));
+        }
+      },
       (books) => emit(FeaturedBooksSuccess(books)),
     );
   }

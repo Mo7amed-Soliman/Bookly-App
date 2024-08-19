@@ -19,3 +19,13 @@ class FeaturedBooksFailure extends FeaturedBooksStates {
 
   const FeaturedBooksFailure(this.errMessage);
 }
+// ? pagination state
+
+class FeaturedBooksPaginationLoading extends FeaturedBooksStates {}
+
+class FeaturedBooksPaginationFailure extends FeaturedBooksStates {
+  final String errMessage;
+
+  const FeaturedBooksPaginationFailure(this.errMessage);
+
+}
