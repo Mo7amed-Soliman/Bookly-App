@@ -10,12 +10,22 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
   NewestBooksCubit(this._homeRepo) : super(NewestBooksInitial());
   final HomeRepoImpl _homeRepo;
 
-  Future<void> fetchNewestBooks() async {
-    emit(NewestBooksLoading());
+  Future<void> fetchNewestBooks({int pageNumber = 0}) async {
+    if (pageNumber == 0) {
+      emit(NewestBooksLoading());
+    } else {
+      emit(NewestBooksPaginationLoading());
+    }
     Either<Failure, List<BookModel>> result =
-        await _homeRepo.fetchNewestBooks();
+        await _homeRepo.fetchNewestBooks(pageNumber: pageNumber);
     result.fold(
-      (failure) => emit(NewestBooksFailure(failure.errmessage)),
+      (failure) {
+        if (pageNumber == 0) {
+          emit(NewestBooksFailure(failure.errmessage));
+        } else {
+          emit(NewestBooksPaginationFailure(failure.errmessage));
+        }
+      },
       (books) => emit(NewestBooksSuccess(books)),
     );
   }

@@ -7,7 +7,9 @@ abstract class HomeRepo {
     int pageNumber = 0,
   });
 
-  Future<Either<Failure, List<BookModel>>> fetchNewestBooks();
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks({
+    int pageNumber = 0,
+  });
 
   Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({
     required String category,

@@ -19,3 +19,12 @@ final class NewestBooksSuccess extends NewestBooksState {
 
   const NewestBooksSuccess(this.books);
 }
+// ? pagination state
+
+class NewestBooksPaginationLoading extends NewestBooksState {}
+
+class NewestBooksPaginationFailure extends NewestBooksState {
+  final String errMessage;
+
+  const NewestBooksPaginationFailure(this.errMessage);
+}
