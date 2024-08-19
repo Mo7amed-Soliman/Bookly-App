@@ -1,6 +1,6 @@
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/view_models/featured_books_cubit/featured_books_cubit.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/end_of_featured_books_list_view_loading_indicator.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/end_of_list_view_loading_indicator.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/featured_books_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +37,7 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           if (index == widget.books.length) {
-            return const EndOfFeaturedBooksListViewLoadingIndicator();
+            return const EndOfListViewLoadingIndicator();
           }
           return FeaturedBooksListViewItem(
             bookModel: widget.books[index],

@@ -19,3 +19,12 @@ final class SimilarBooksSuccess extends SimilarBooksState {
 
   const SimilarBooksSuccess(this.books);
 }
+// ? pagination state
+
+class SimilarBooksPaginationLoading extends SimilarBooksState {}
+
+class SimilarBooksPaginationFailure extends SimilarBooksState {
+  final String errMessage;
+
+  const SimilarBooksPaginationFailure(this.errMessage);
+}

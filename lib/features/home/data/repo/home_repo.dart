@@ -4,14 +4,15 @@ import 'package:dartz/dartz.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks({
-    int pageNumber = 0,
+    int pageNumber,
   });
 
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks({
-    int pageNumber = 0,
+    int pageNumber,
   });
 
   Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({
     required String category,
+    int pageNumber,
   });
 }
